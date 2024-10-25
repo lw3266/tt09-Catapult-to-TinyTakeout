@@ -5,6 +5,17 @@
 
 `default_nettype none
 
+module FA(output sum, cout, input a, b, cin);
+  wire w0, w1, w2;
+  
+  xor #(2) (w0, a, b);
+  xor #(2) (sum, w0, cin);
+  
+  and #(1) (w1, w0, cin);
+  and #(1) (w2, a, b);
+  or #(1) (cout, w1, w2);
+endmodule
+
 module tt_um_example (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
@@ -16,6 +27,9 @@ module tt_um_example (
     input  wire       rst_n     // reset_n - low to reset
 );
 
+
+    
+    
   // All output pins must be assigned. If not used, assign to 0.
   assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
   assign uio_out = 0;
