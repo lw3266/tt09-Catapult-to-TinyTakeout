@@ -61,25 +61,7 @@ module MUX2to1_w4(output [3:0] y, input [3:0] i0, i1, input s);
   
 endmodule
 
-// Carry Select Adder - 8 bits
-module CSelA8(output [7:0] sum, output cout, input [7:0] a, b);
-
-  wire [7:0] sum0, sum1;
-  wire c1;
-
-  RCA4 rca0_0(sum0[3:0], cout0_0, a[3:0], b[3:0], 0);
-  RCA4 rca0_1(sum1[3:0], cout0_1, a[3:0], b[3:0], 1);
-  MUX2to1_w4 mux0_sum(sum[3:0], sum0[3:0], sum1[3:0], 0);
-  MUX2to1_w1 mux0_cout(c1, cout0_0, cout0_1, 0);
-
-  RCA4 rca1_0(sum0[7:4], cout1_0, a[7:4], b[7:4], 0);
-  RCA4 rca1_1(sum1[7:4], cout1_1, a[7:4], b[7:4], 1);
-  MUX2to1_w4 mux1_sum(sum[7:4], sum0[7:4], sum1[7:4], c1);
-  MUX2to1_w1 mux1_cout(cout, cout1_0, cout1_1, c1);
-  
-endmodule
-
-module tt_um_example (
+module tt_um_CarrySelect8bit (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
@@ -90,11 +72,25 @@ module tt_um_example (
     input  wire       rst_n     // reset_n - low to reset
 );
 
+    // Internal Signals
+  wire [7:0] sum, sum0, sum1;
+  wire cout0_0, cout0_1, c1;
+    
+  RCA4 rca0_0(sum0[3:0], cout0_0, ui_in[3:0], uio_in[3:0], 0); //calculates 4 LSB of a + b with cin = 0
+  RCA4 rca0_1(sum1[3:0], cout0_1, ui_in[3:0], uio_in[3:0], 1); //calculates 4 LSB of a + b with cin = 1
+  MUX2to1_w4 mux0_sum(sum[3:0], sum0[3:0], sum1[3:0], 0); // this will always give sum0
+  MUX2to1_w1 mux0_cout(c1, cout0_0, cout0_1, 0); // this will always give cout0_0
+
+  RCA4 rca1_0(sum0[7:4], cout1_0, a[7:4], b[7:4], 0); //calculates 4 MSB of a + b with cin = 0
+  RCA4 rca1_1(sum1[7:4], cout1_1, a[7:4], b[7:4], 1); //calculates 4 MSB of a + b with cin = 0
+  MUX2to1_w4 mux1_sum(sum[7:4], sum0[7:4], sum1[7:4], c1); // this will always select sum0, as c1 is always cout0_0
+  MUX2to1_w1 mux1_cout(cout, cout1_0, cout1_1, c1);
+
 
     
     
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
+  assign uo_out  = sum;  // Example: ou_out is the sum of ui_in and uio_in
   assign uio_out = 0;
   assign uio_oe  = 0;
 
