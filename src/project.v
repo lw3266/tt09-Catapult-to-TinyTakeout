@@ -55,7 +55,7 @@ module MUX2to1_w4(output wire [3:0] y,
                   input wire [3:0] i0,
                   input wire [3:0] i1,
                   input wire s);
-
+  wire sn;
   wire [3:0] e0, e1;
   not #(1) (sn, s);
   
@@ -96,8 +96,8 @@ module tt_um_CarrySelect8bit (
           MUX2to1_w4 mux0_sum(sum[3:0], sum0[3:0], sum1[3:0], 1'b0); // this will always give sum0
           MUX2to1_w1 mux0_cout(c1, cout0_0, cout0_1, 1'b0); // this will always give cout0_0
 
-          RCA4 rca1_0(sum0[7:4], cout1_0, a[7:4], b[7:4], 1'b0); //calculates 4 MSB of a + b with cin = 0
-          RCA4 rca1_1(sum1[7:4], cout1_1, a[7:4], b[7:4], 1'b1); //calculates 4 MSB of a + b with cin = 0
+          RCA4 rca1_0(sum0[7:4], cout1_0, ui_in[7:4], uio_in[7:4], 1'b0); //calculates 4 MSB of a + b with cin = 0
+          RCA4 rca1_1(sum1[7:4], cout1_1, ui_in[7:4], uio_in[7:4], 1'b1); //calculates 4 MSB of a + b with cin = 0
   MUX2to1_w4 mux1_sum(sum[7:4], sum0[7:4], sum1[7:4], c1); // this will always select sum0, as c1 is always cout0_0
   MUX2to1_w1 mux1_cout(cout, cout1_0, cout1_1, c1);
 
