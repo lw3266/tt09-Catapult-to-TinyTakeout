@@ -9,12 +9,14 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+The 8-bit carry select adder works through the full adder and mux. How it works is essentially two ripple adders, with one having cin = 0 and the other cin = 1. Through this procedure, we are able to speed up the calculation of selecting which sum depending on our cin.
 
 ## How to test
 
-Explain how to use your project
+We tested all the combinations. This means two 8 bits input sum to a 8 bit output, and we ignore the carry out bit.
+
+Therefore, we expect both the input and the output to be in the range of 0 to 255.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+We did not use any external hardware.
