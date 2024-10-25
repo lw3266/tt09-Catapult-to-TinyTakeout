@@ -40,7 +40,7 @@ module MUX2to1_w1(output wire y,
                   input wire i0,
                   input wire i1,
                   input wire s);
-
+  wire sn;
   wire e0, e1;
   not #(1) (sn, s);
   
