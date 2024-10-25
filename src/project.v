@@ -46,7 +46,7 @@ module MUX2to1_w1(output wire y,
 
   assign e0 = i0 & sn;
   assign e1 = i1 & s;
-  or y = e0 | e1;
+  assign y = e0 | e1;
   
 endmodule
 
