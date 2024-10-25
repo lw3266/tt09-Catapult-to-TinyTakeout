@@ -12,12 +12,12 @@ module FA(output wire sum,
           input wire cin);
   wire w0, w1, w2;
   
-  xor #(2) (w0, a, b);
-  xor #(2) (sum, w0, cin);
-  
-  and #(1) (w1, w0, cin);
-  and #(1) (w2, a, b);
-  or #(1) (cout, w1, w2);
+  assign w0 = a ^ b;
+  assign sum = w0 ^ cin;
+
+  assign w1 = w0 & cin;
+  assign w2 = a & b;
+  assign cout = w1 | w2;
   
 endmodule
 
@@ -42,12 +42,11 @@ module MUX2to1_w1(output wire y,
                   input wire s);
   wire sn;
   wire e0, e1;
-  not #(1) (sn, s);
-  
-  and #(1) (e0, i0, sn);
-  and #(1) (e1, i1, s);
-  
-  or #(1) (y, e0, e1);
+  assign sn = ~s;
+
+  assign e0 = i0 & sn;
+  assign e1 = i1 & s;
+  or y = e0 | e1;
   
 endmodule
 
@@ -57,22 +56,22 @@ module MUX2to1_w4(output wire [3:0] y,
                   input wire s);
   wire sn;
   wire [3:0] e0, e1;
-  not #(1) (sn, s);
-  
-  and #(1) (e0[0], i0[0], sn);
-  and #(1) (e0[1], i0[1], sn);
-  and #(1) (e0[2], i0[2], sn);
-  and #(1) (e0[3], i0[3], sn);
-      
-  and #(1) (e1[0], i1[0], s);
-  and #(1) (e1[1], i1[1], s);
-  and #(1) (e1[2], i1[2], s);
-  and #(1) (e1[3], i1[3], s);
-  
-  or #(1) (y[0], e0[0], e1[0]);
-  or #(1) (y[1], e0[1], e1[1]);
-  or #(1) (y[2], e0[2], e1[2]);
-  or #(1) (y[3], e0[3], e1[3]);
+  assign sn = ~n;
+
+  assign e0[0] =  i0[0] & sn;
+  assign e0[1] =  i0[1] & sn;
+  assign e0[2] =  i0[2] & sn;
+  assign e0[3] =  i0[3] & sn;
+
+  assign e1[0] = i1[0] & s;
+  assign e1[1] = i1[1] & s;
+  assign e1[2] = i1[2] & s;
+  assign e1[3] = i1[3] & s;
+
+  assign y[0] = e0[0] | e1[0];
+  assign y[1] = e0[1] | e1[1];
+  assign y[2] = e0[2] | e1[2];
+  assign y[3] = e0[3] | e1[3];
   
 endmodule
 
