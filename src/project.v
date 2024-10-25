@@ -89,7 +89,7 @@ module tt_um_CarrySelect8bit (
 
     // Internal Signals
   wire [7:0] sum, sum0, sum1;
-  wire cout, cout0_0, cout0_1, c1;
+  wire cout, cout0_0, cout0_1, cout1_0, cout1_1, c1;
     
           RCA4 rca0_0(sum0[3:0], cout0_0, ui_in[3:0], uio_in[3:0], 1'b0); //calculates 4 LSB of a + b with cin = 0
           RCA4 rca0_1(sum1[3:0], cout0_1, ui_in[3:0], uio_in[3:0], 1'b1); //calculates 4 LSB of a + b with cin = 1
