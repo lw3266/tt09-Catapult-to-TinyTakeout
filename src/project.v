@@ -5,7 +5,11 @@
 
 `default_nettype none
 
-module FA(output sum, cout, input a, b, cin);
+module FA(output wire sum,
+          output wire cout,
+          input wire a,
+          input wire b,
+          input wire cin);
   wire w0, w1, w2;
   
   xor #(2) (w0, a, b);
@@ -14,10 +18,15 @@ module FA(output sum, cout, input a, b, cin);
   and #(1) (w1, w0, cin);
   and #(1) (w2, a, b);
   or #(1) (cout, w1, w2);
+  
 endmodule
 
 // Ripple Carry Adder with cin - 4 bits
-module RCA4(output [3:0] sum, output cout, input [3:0] a, b, input cin);
+module RCA4(output wire [3:0] sum,
+            output wire cout,
+            input wire [3:0] a,
+            input wire [3:0] b,
+            input wire cin);
   
   wire [3:1] c;
   
@@ -27,7 +36,10 @@ module RCA4(output [3:0] sum, output cout, input [3:0] a, b, input cin);
   
 endmodule
 
-module MUX2to1_w1(output y, input i0, i1, s);
+module MUX2to1_w1(output wire y,
+                  input wire i0,
+                  input wire i1,
+                  input wire s);
 
   wire e0, e1;
   not #(1) (sn, s);
@@ -39,7 +51,10 @@ module MUX2to1_w1(output y, input i0, i1, s);
   
 endmodule
 
-module MUX2to1_w4(output [3:0] y, input [3:0] i0, i1, input s);
+module MUX2to1_w4(output wire [3:0] y,
+                  input wire [3:0] i0,
+                  input wire [3:0] i1,
+                  input wire s);
 
   wire [3:0] e0, e1;
   not #(1) (sn, s);
