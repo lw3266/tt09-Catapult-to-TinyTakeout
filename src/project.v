@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2024 Your Name
+ * Copyright (c) 2024 Juan Gil & Leyang 
+ * 
  * SPDX-License-Identifier: Apache-2.0
  */
 
