@@ -1,5 +1,6 @@
 /*
- * Copyright (c) 2024 Juan Gil & Leyang 
+ * Copyright (c) Krishna Subramanian <https://github.com/mongrelgem>
+ * Modified in 2024 by Juan Gil & Leyang Wang
  * 
  * SPDX-License-Identifier: Apache-2.0
  */
