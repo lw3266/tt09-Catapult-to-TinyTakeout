@@ -14,7 +14,7 @@
 // ------------------------------------------------------------------
 
 
-module fir_core_core_fsm (
+module tt_um_fir_core_core_fsm (
   clk, rst, fsm_output, Shift_Accum_Loop_C_4_tr0
 );
   input clk;
@@ -191,7 +191,7 @@ module fir_core (
       .I_1(i_4_0_sva_3_0),
       .O_1(ROM_1i4_1o2_69443db1eaa1d9e970efd8ef438226512e_1)
     );
-  fir_core_core_fsm fir_core_core_fsm_inst (
+  tt_um_fir_core_core_fsm fir_core_core_fsm_inst (
       .clk(clk),
       .rst(rst),
       .fsm_output(fsm_output),
