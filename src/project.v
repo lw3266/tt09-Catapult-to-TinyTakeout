@@ -620,7 +620,7 @@ module fir (
       .y_rsc_dat(y_rsc_dat),
       .y_triosy_lz(y_triosy_lz),
       .x_rsc_dat(x_rsc_dat),
-      .x_triosy_lz(x_triosy_lz),
+      .x_triosy_lz(x_triosy_lz)
 
 
       //.y_rsc_dat(b),
@@ -655,7 +655,7 @@ module tt_um_fir (
     .y_rsc_dat(b),
     .y_triosy_lz(c0),
     .x_rsc_dat(a),
-    .x_triosy_lz(c1),
+    .x_triosy_lz(c1)
   );
 
   
