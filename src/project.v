@@ -641,8 +641,8 @@ module tt_um_fir (
 );
 
   // Internal Signals
-  wire [7:0] a;
-  wire [15:0] b;
+  wire [31:0] a;
+  wire [31:0] b;
   wire c0,c1,rst;
 
   assign a[7:0] = ui_in[7:0]; 
