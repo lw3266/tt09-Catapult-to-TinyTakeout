@@ -597,8 +597,8 @@ endmodule
 //  Design Unit:    fir
 // ------------------------------------------------------------------
 
-
-module fir (
+//module fir ( 
+module tt_um_fir (
   clk, rst, y_rsc_dat, y_triosy_lz, x_rsc_dat, x_triosy_lz
 );
   input clk;
