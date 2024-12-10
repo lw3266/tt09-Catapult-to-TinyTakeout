@@ -597,19 +597,19 @@ endmodule
 //  Design Unit:    fir
 // ------------------------------------------------------------------
 
-//module fir ( 
-module tt_um_fir (
+module fir ( 
+//module tt_um_fir (
   clk, rst, y_rsc_dat, y_triosy_lz, x_rsc_dat, x_triosy_lz
 );
   input clk;
   input rst;
-  //output [31:0] y_rsc_dat;
+  output [31:0] y_rsc_dat;
   output y_triosy_lz;
-  //input [31:0] x_rsc_dat;
+  input [31:0] x_rsc_dat;
   output x_triosy_lz;
 
-  input [7:0] a;
-  output [15:0] b;
+  //input [7:0] a;
+  //output [15:0] b;
 
 
 
@@ -617,13 +617,57 @@ module tt_um_fir (
   fir_core fir_core_inst (
       .clk(clk),
       .rst(rst),
-      //.y_rsc_dat(y_rsc_dat),
+      .y_rsc_dat(y_rsc_dat),
       .y_triosy_lz(y_triosy_lz),
-      //.x_rsc_dat(x_rsc_dat),
+      .x_rsc_dat(x_rsc_dat),
       .x_triosy_lz(x_triosy_lz),
 
 
-      .y_rsc_dat(b),
-      .x_rsc_dat(a)
+      //.y_rsc_dat(b),
+      //.x_rsc_dat(a)
     );
 endmodule
+
+
+module tt_um_fir (
+    input  wire [7:0] ui_in,    // Dedicated inputs
+    output wire [7:0] uo_out,   // Dedicated outputs
+    input  wire [7:0] uio_in,   // IOs: Input path
+    output wire [7:0] uio_out,  // IOs: Output path
+    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+    input  wire       ena,      // always 1 when the design is powered, so you can ignore it
+    input  wire       clk,      // clock
+    input  wire       rst_n     // reset_n - low to reset
+);
+
+  // Internal Signals
+  wire [7:0] a;
+  wire [15:0] b;
+  wire c0,c1,rst;
+
+  assign a[7:0] = ui_in[7:0]; 
+
+
+  
+  fir fir_inst (
+      .clk(clk),
+    .rst(rst),
+    .y_rsc_dat(b),
+    .y_triosy_lz(c0),
+    .x_rsc_dat(a),
+    .x_triosy_lz(c1),
+  );
+
+  
+
+  // All output pins must be assigned. If not used, assign to 0.
+  //assign uo_out  = b;  // Example: ou_out is the sum of ui_in and uio_in
+  assign uo_out = b[7:0];
+  assign uio_out = b[15:8];
+
+  // List all unused inputs to prevent warnings
+  wire _unused = &{ena, rst_n, rst, uio_in,  1'b0};
+
+  
+endmodule
+
