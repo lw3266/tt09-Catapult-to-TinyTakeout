@@ -32,14 +32,14 @@ pinout:
   ui[7]: "a[7]"
 
   # Outputs
-  uo[0]: "sum[0]"
-  uo[1]: "sum[1]"
-  uo[2]: "sum[2]"
-  uo[3]: "sum[3]"
-  uo[4]: "sum[4]"
-  uo[5]: "sum[5]"
-  uo[6]: "sum[6]"
-  uo[7]: "sum[7]"
+  uo[0]: "b[8]"
+  uo[1]: "b[9]"
+  uo[2]: "b[10]"
+  uo[3]: "b[11]"
+  uo[4]: "b[12]"
+  uo[5]: "b[13]"
+  uo[6]: "b[14]"
+  uo[7]: "b[15]"
 
   # Bidirectional pins
   uio[0]: "b[0]"
