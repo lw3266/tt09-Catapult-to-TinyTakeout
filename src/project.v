@@ -603,10 +603,13 @@ module fir (
 );
   input clk;
   input rst;
-  output [31:0] y_rsc_dat;
+  //output [31:0] y_rsc_dat;
   output y_triosy_lz;
-  input [31:0] x_rsc_dat;
+  //input [31:0] x_rsc_dat;
   output x_triosy_lz;
+
+  input [7:0] a;
+  output [15:0] b;
 
 
 
@@ -614,9 +617,13 @@ module fir (
   fir_core fir_core_inst (
       .clk(clk),
       .rst(rst),
-      .y_rsc_dat(y_rsc_dat),
+      //.y_rsc_dat(y_rsc_dat),
       .y_triosy_lz(y_triosy_lz),
-      .x_rsc_dat(x_rsc_dat),
-      .x_triosy_lz(x_triosy_lz)
+      //.x_rsc_dat(x_rsc_dat),
+      .x_triosy_lz(x_triosy_lz),
+
+
+      .y_rsc_dat(b),
+      .x_rsc_dat(a)
     );
 endmodule
