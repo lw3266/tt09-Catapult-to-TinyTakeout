@@ -867,13 +867,13 @@ module fir_core (
   end
   endfunction
 
-  assign fsm_output[4:2] = 0;
-  assign nl_Shift_Accum_Loop_acc_1_tmp[5] = 0;
-  assign nl_Shift_Accum_Loop_if_acc_4_sdt_1[9] = 0;
-  assign nl_Shift_Accum_Loop_else_acc_1_tmp[4] = 0;
-  assign nl_Shift_Accum_Loop_else_acc_nl[16] = 0;
-  assign nl_operator_8_true_1_mul_1_nl[18:16] = 0;
-  assign nl_Shift_Accum_Loop_if_acc_6_nl[8] = 0;
+  // assign fsm_output[4:2] = 0;
+  // assign nl_Shift_Accum_Loop_acc_1_tmp[5] = 0;
+  // assign nl_Shift_Accum_Loop_if_acc_4_sdt_1[9] = 0;
+  // assign nl_Shift_Accum_Loop_else_acc_1_tmp[4] = 0;
+  // assign nl_Shift_Accum_Loop_else_acc_nl[16] = 0;
+  // assign nl_operator_8_true_1_mul_1_nl[18:16] = 0;
+ // assign nl_Shift_Accum_Loop_if_acc_6_nl[8] = 0;
   
   
 
@@ -920,9 +920,7 @@ module tt_um_fir (
 
   // Internal Signals
   wire [7:0] a;
-  wire [15:0] b;
-
-  wire c0, c1;
+  wire [13:0] b;
 
   assign a[7:0] = ui_in[7:0];
   
@@ -935,7 +933,7 @@ module tt_um_fir (
   fir fir_inst (
       .clk(clk),
     .rst(rst_n),
-    .y_rsc_dat(b),
+    .y_rsc_dat({2'b0,b}),
     .y_triosy_lz(uio_out[7]),
     .x_rsc_dat(a),
     .x_triosy_lz(uio_out[6])
