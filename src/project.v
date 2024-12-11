@@ -206,6 +206,6 @@ module tt_um_fir (
   assign uio_out = b[15:8];
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, rst_n, rst, uio_in,  1'b0};
+  wire _unused = &{ena, rst_n, uio_in,  1'b0};
 
 endmodule
