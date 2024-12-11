@@ -922,6 +922,8 @@ module tt_um_fir (
   wire [7:0] a;
   wire [15:0] b;
 
+  wire c0, c1, rst;
+
   assign a[7:0] = ui_in[7:0]; 
 
 
@@ -945,7 +947,7 @@ module tt_um_fir (
   
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, rst_n, rst, uio_in,  1'b0};
+  wire _unused = &{ena, rst_, uio_in,  1'b0};
 
   
 endmodule
