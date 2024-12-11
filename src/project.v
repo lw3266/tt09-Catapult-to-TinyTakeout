@@ -191,7 +191,7 @@ module tt_um_fir (
 
   assign a[7:0] = ui_in[7:0]; 
 
-  fir fir_inst (
+  tt_um_fir fir_inst (
       .clk(clk),
     .rst(rst),
     .y_rsc_dat(b),
