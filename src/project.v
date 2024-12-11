@@ -921,29 +921,29 @@ module tt_um_fir (
   // Internal Signals
   wire [7:0] a;
   wire [13:0] b;
+  wire [2:0] c;
 
   assign a[7:0] = ui_in[7:0];
   
   assign uo_out = b[7:0];
   assign uio_out[5:0] = b[13:8];
 
-  assign uio_oe = 0;
+  assign uio_oe = {5'b0, c};
 
   
   fir fir_inst (
       .clk(clk),
     .rst(rst_n),
-    .y_rsc_dat({2'b0,b}),
+    .y_rsc_dat({c,b}),
     .y_triosy_lz(uio_out[7]),
     .x_rsc_dat(a),
     .x_triosy_lz(uio_out[6])
+    .a
   );
 
 // All output pins must be assigned. If not used, assign to 0.
   //assign uo_out  = b;  // Example: ou_out is the sum of ui_in and uio_in
  
-  
-
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, uio_in,  1'b0};
 
