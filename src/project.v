@@ -922,7 +922,6 @@ module tt_um_fir (
   // Internal Signals
   wire [7:0] a;
   wire [15:0] b;
-  wire c0,c1,rst;
 
   assign a[7:0] = ui_in[7:0]; 
 
@@ -942,10 +941,8 @@ module tt_um_fir (
   assign uo_out = b[7:0];
   assign uio_out = b[15:8];
 
-  assign c0 = 0;
-  assign c1 = 0;
   assign uio_oe = 0;
-  assign rst = 0;
+
   
 
   // List all unused inputs to prevent warnings
