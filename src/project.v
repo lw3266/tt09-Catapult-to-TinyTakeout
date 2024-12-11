@@ -20,7 +20,7 @@
 
 module ccs_out_v1 (dat, idat);
 
-  parameter integer rscid = 1;
+  //parameter integer rscid = 1;
   parameter integer width = 8;
 
   output   [width-1:0] dat;
@@ -56,7 +56,7 @@ endmodule
 
 module ccs_in_v1 (idat, dat);
 
-  parameter integer rscid = 1;
+  //parameter integer rscid = 1;
   parameter integer width = 8;
 
   output [width-1:0] idat;
@@ -89,7 +89,7 @@ endmodule
 
 
 module mgc_io_sync_v2 (ld, lz);
-    parameter valid = 0;
+    //parameter valid = 0;
 
     input  ld;
     output lz;
@@ -868,6 +868,16 @@ module fir_core (
   end
   endfunction
 
+  assign fsm_output[4:2] = 0;
+  assign nl_Shift_Accum_Loop_acc_1_tmp[5] = 0;
+  assign nl_Shift_Accum_Loop_if_acc_4_sdt_1[9] = 0;
+  assign nl_Shift_Accum_Loop_else_acc_1_tmp[4] = 0;
+  assign nl_Shift_Accum_Loop_else_acc_nl[16] = 0;
+  assign nl_operator_8_true_1_mul_1_nl[18:16] = 0;
+  assign nl_Shift_Accum_Loop_if_acc_6_nl[8] = 0;
+  
+  
+
 endmodule
 
 // ------------------------------------------------------------------
@@ -931,6 +941,12 @@ module tt_um_fir (
   //assign uo_out  = b;  // Example: ou_out is the sum of ui_in and uio_in
   assign uo_out = b[7:0];
   assign uio_out = b[15:8];
+
+  assign c0 = 0;
+  assign c1 = 0;
+  assign uio_oe = 0;
+  assign rst = 0;
+  
 
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, rst_n, rst, uio_in,  1'b0};
