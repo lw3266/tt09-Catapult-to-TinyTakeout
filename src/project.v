@@ -88,7 +88,7 @@ endmodule
 
 
 module mgc_io_sync_v2 (ld, lz);
-    parameter valid = 0;
+    // parameter valid = 0;
 
     input  ld;
     output lz;
