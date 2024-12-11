@@ -938,7 +938,6 @@ module tt_um_fir (
     .y_triosy_lz(uio_out[7]),
     .x_rsc_dat(a),
     .x_triosy_lz(uio_out[6])
-    .a
   );
 
 // All output pins must be assigned. If not used, assign to 0.
