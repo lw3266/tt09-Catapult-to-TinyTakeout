@@ -20,7 +20,7 @@
 
 module ccs_out_v1 (dat, idat);
 
-  //parameter integer rscid = 1;
+  parameter integer rscid = 1;
   parameter integer width = 8;
 
   output   [width-1:0] dat;
@@ -56,7 +56,7 @@ endmodule
 
 module ccs_in_v1 (idat, dat);
 
-  //parameter integer rscid = 1;
+  parameter integer rscid = 1;
   parameter integer width = 8;
 
   output [width-1:0] idat;
@@ -89,7 +89,7 @@ endmodule
 
 
 module mgc_io_sync_v2 (ld, lz);
-    //parameter valid = 0;
+    parameter valid = 0;
 
     input  ld;
     output lz;
