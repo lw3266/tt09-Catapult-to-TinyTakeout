@@ -924,8 +924,12 @@ module tt_um_fir (
 
   wire c0, c1, rst;
 
-  assign a[7:0] = ui_in[7:0]; 
+  assign a[7:0] = ui_in[7:0];
+  
+  assign uo_out = b[7:0];
+  assign uio_out = b[15:8];
 
+  assign uio_oe = 0;
 
   
   fir fir_inst (
@@ -939,10 +943,7 @@ module tt_um_fir (
 
 // All output pins must be assigned. If not used, assign to 0.
   //assign uo_out  = b;  // Example: ou_out is the sum of ui_in and uio_in
-  assign uo_out = b[7:0];
-  assign uio_out = b[15:8];
-
-  assign uio_oe = 0;
+ 
   
 
   // List all unused inputs to prevent warnings
