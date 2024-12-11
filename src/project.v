@@ -922,23 +922,23 @@ module tt_um_fir (
   wire [7:0] a;
   wire [15:0] b;
 
-  wire c0, c1, rst;
+  wire c0, c1;
 
   assign a[7:0] = ui_in[7:0];
   
   assign uo_out = b[7:0];
-  assign uio_out = b[15:8];
+  assign uio_out[5:0] = b[13:8];
 
   assign uio_oe = 0;
 
   
   fir fir_inst (
       .clk(clk),
-    .rst(rst),
+    .rst(rst_n),
     .y_rsc_dat(b),
-    .y_triosy_lz(c0),
+    .y_triosy_lz(uio_out[7]),
     .x_rsc_dat(a),
-    .x_triosy_lz(c1)
+    .x_triosy_lz(uio_out[6])
   );
 
 // All output pins must be assigned. If not used, assign to 0.
@@ -947,7 +947,7 @@ module tt_um_fir (
   
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, rst_n, uio_in,  1'b0};
+  wire _unused = &{ena, uio_in,  1'b0};
 
   
 endmodule
