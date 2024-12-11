@@ -941,7 +941,7 @@ module tt_um_fir (
   assign uio_out = b[15:8];
 
   assign uio_oe = 0;
-
+  assign rst = 0;
   
 
   // List all unused inputs to prevent warnings
