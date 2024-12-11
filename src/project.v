@@ -1,4 +1,3 @@
-`default_nettype none
 
 //------> /eda/mentor/Siemens_EDA/Catapult_Synthesis_2023.1_2/Mgc_home/pkgs/siflibs/ccs_out_v1.v 
 //------------------------------------------------------------------------------
