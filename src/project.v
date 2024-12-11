@@ -479,11 +479,11 @@ module fir_core (
       .dat(x_rsc_dat),
       .idat(x_rsci_idat)
     );
-  mgc_io_sync_v2 #(.valid(32'sd0)) y_triosy_obj (
+  mgc_io_sync_v2 y_triosy_obj (
       .ld(reg_x_triosy_obj_ld_cse),
       .lz(y_triosy_lz)
     );
-  mgc_io_sync_v2 #(.valid(32'sd0)) x_triosy_obj (
+  mgc_io_sync_v2 x_triosy_obj (
       .ld(reg_x_triosy_obj_ld_cse),
       .lz(x_triosy_lz)
     );
