@@ -19,7 +19,6 @@
 
 module ccs_out_v1 (dat, idat);
 
-  parameter integer rscid = 1;
   parameter integer width = 8;
 
   output   [width-1:0] dat;
@@ -55,7 +54,6 @@ endmodule
 
 module ccs_in_v1 (idat, dat);
 
-  parameter integer rscid = 1;
   parameter integer width = 8;
 
   output [width-1:0] idat;
@@ -469,12 +467,12 @@ module fir_core (
   wire and_19_nl;
 
   // Interconnect Declarations for Component Instantiations 
-  ccs_out_v1 #(.rscid(32'sd1),
+  ccs_out_v1 
   .width(32'sd16)) y_rsci (
       .idat(y_rsci_idat),
       .dat(y_rsc_dat)
     );
-  ccs_in_v1 #(.rscid(32'sd2),
+  ccs_in_v1 
   .width(32'sd8)) x_rsci (
       .dat(x_rsc_dat),
       .idat(x_rsci_idat)
@@ -921,7 +919,7 @@ module tt_um_fir (
   // Internal Signals
   wire [7:0] a;
   wire [13:0] b;
-  wire [2:0] c;
+  wire [1:0] c;
 
   assign a[7:0] = ui_in[7:0];
   
