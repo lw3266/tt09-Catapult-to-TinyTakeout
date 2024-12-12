@@ -936,7 +936,8 @@ module tt_um_fir (
   fir fir_inst (
       .clk(clk),
     .rst(rst_n),
-    .y_rsc_dat({uio_out[7:0],uo_out[7:0]}),
+    //.y_rsc_dat({uio_out[7:0],uo_out[7:0]}),
+    .y_rsc_dat(b),
     .y_triosy_lz(c[0]),
     .x_rsc_dat(a),
     .x_triosy_lz(c[1]),
