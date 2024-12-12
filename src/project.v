@@ -923,7 +923,7 @@ module tt_um_fir (
   wire [14:0] b;
   wire [1:0] c;
 
-  assign ui_in[7:0] = a[7:0]; 
+  assign a[7:0] = ui_in[7:0]; 
 
   assign uio_out[7:0] = b[7:0];
   assign uo_out[7:0] = b[15:8];
