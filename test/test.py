@@ -11,7 +11,7 @@ async def test_project(dut):
     dut._log.info("Start")
 
     # Set the clock period to 10 us (100 KHz)
-    clock = Clock(dut.clk, 10, units="us")
+    clock = Clock(dut.clk, 10, units="ns")
     cocotb.start_soon(clock.start())
 
     # Reset
@@ -39,7 +39,7 @@ async def test_project(dut):
     #         assert dut.uo_out.value == (i+j)%256
 
     expected = [0, -95, -190, 86, 362, 38, -286, 390, 1066, 1142, 1218, 1665, 2112, 2464, 2816, 3168, 3520, 3872, 4224, 4576, 4928, 5280, 5632, 5984, 6336, 6688, 7040, 7392, 7744, 8096]
-    for i in range(30):
+    for i in range(0,30):
         dut.ui_in.value = i
         await ClockCycles(dut.clk, 100)
         # .y_rsc_dat({uio_out[7:0],uo_out[7:0]}),
