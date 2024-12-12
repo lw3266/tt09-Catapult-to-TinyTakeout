@@ -924,7 +924,7 @@ module tt_um_fir (
     .x_triosy_lz(c[1])
   );
 
-  assign uio_oe[7:3] = 0
+  assign uio_oe[7:3] = 0;
 
     wire _unused = &{ena, 1'b0};
 
