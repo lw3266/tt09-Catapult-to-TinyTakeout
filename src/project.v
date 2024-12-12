@@ -403,7 +403,7 @@ endmodule
 
 
 module fir_core (
-  clk, rst, y_rsc_dat, y_triosy_lz, x_rsc_dat, x_triosy_lz
+  clk, rst, y_rsc_dat, y_triosy_lz, x_rsc_dat, x_triosy_lz, extra
 );
   input clk;
   input rst;
@@ -883,7 +883,7 @@ endmodule
 
 
 module fir (
-  clk, rst, y_rsc_dat, y_triosy_lz, x_rsc_dat, x_triosy_lz
+  clk, rst, y_rsc_dat, y_triosy_lz, x_rsc_dat, x_triosy_lz, extra
 );
   input clk;
   input rst;
