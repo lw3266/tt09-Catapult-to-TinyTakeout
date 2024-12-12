@@ -920,10 +920,11 @@ module tt_um_fir (
 
   // Internal Signals
   wire [7:0] a;
-  //wire [14:0] b;
+  wire [15:0] b;
   wire [1:0] c;
 
   assign a[7:0] = ui_in[7:0]; 
+  assign b[15:0] = {uio_out[7:0],uo_out[7:0]};
 
 
   //assign {uio_out[7:0],uo_out[7:0]}
