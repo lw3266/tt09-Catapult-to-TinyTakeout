@@ -702,7 +702,7 @@ module fir_core (
   assign nl_operator_8_true_1_mul_1_nl = $signed(Shift_Accum_Loop_else_Shift_Accum_Loop_else_slc_shift_reg_8_7_0_1_cse_sva_1)
       * $signed(({ROM_1i4_1o8_d696dcf5844c155a2ae249853341a28f2e_1 , 1'b0 , ROM_1i4_1o2_69443db1eaa1d9e970efd8ef438226512e_1}));
   assign operator_8_true_1_mul_1_nl = nl_operator_8_true_1_mul_1_nl[15:0];
-  assign nl_Shift_Accum_Loop_if_acc_6_nl = (~ x_sva) + conv_s2s_7_8(Shift_Accum_Loop_if_acc_4_sdt_1[8:2]);
+  assign nl_Shift_Accum_Loop_if_acc_6_nl = ~(x_sva[7:0]) + conv_s2s_7_8(Shift_Accum_Loop_if_acc_4_sdt_1[8:2]);
   assign Shift_Accum_Loop_if_acc_6_nl = nl_Shift_Accum_Loop_if_acc_6_nl[7:0];
   assign and_139_nl = (i_4_0_sva_3_0==4'b0000) & (fsm_output[1]);
   assign Shift_Accum_Loop_else_mux_2_nl = MUX_v_16_2_2(operator_8_true_1_mul_1_nl,
