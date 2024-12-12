@@ -19,7 +19,6 @@
 
 module ccs_out_v1 (dat, idat);
 
-  parameter integer rscid = 1;
   parameter integer width = 8;
 
   output   [width-1:0] dat;
@@ -55,7 +54,6 @@ endmodule
 
 module ccs_in_v1 (idat, dat);
 
-  parameter integer rscid = 1;
   parameter integer width = 8;
 
   output [width-1:0] idat;
@@ -88,7 +86,6 @@ endmodule
 
 
 module mgc_io_sync_v2 (ld, lz);
-    parameter valid = 0;
 
     input  ld;
     output lz;
@@ -469,21 +466,19 @@ module fir_core (
   wire and_19_nl;
 
   // Interconnect Declarations for Component Instantiations 
-  ccs_out_v1 #(.rscid(32'sd1),
-  .width(32'sd16)) y_rsci (
+  ccs_out_v1 #(.width(32'sd16)) y_rsci (
       .idat(y_rsci_idat),
       .dat(y_rsc_dat)
     );
-  ccs_in_v1 #(.rscid(32'sd2),
-  .width(32'sd8)) x_rsci (
+  ccs_in_v1 #(.width(32'sd8)) x_rsci (
       .dat(x_rsc_dat),
       .idat(x_rsci_idat)
     );
-  mgc_io_sync_v2 #(.valid(32'sd0)) y_triosy_obj (
+  mgc_io_sync_v2 y_triosy_obj (
       .ld(reg_x_triosy_obj_ld_cse),
       .lz(y_triosy_lz)
     );
-  mgc_io_sync_v2 #(.valid(32'sd0)) x_triosy_obj (
+  mgc_io_sync_v2 x_triosy_obj (
       .ld(reg_x_triosy_obj_ld_cse),
       .lz(x_triosy_lz)
     );
@@ -895,5 +890,43 @@ module fir (
       .x_rsc_dat(x_rsc_dat),
       .x_triosy_lz(x_triosy_lz)
     );
+endmodule
+
+module tt_um_fir (
+    input  wire [7:0] ui_in,    // Dedicated inputs
+    output wire [7:0] uo_out,   // Dedicated outputs
+    input  wire [7:0] uio_in,   // IOs: Input path
+    output wire [7:0] uio_out,  // IOs: Output path
+    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+    input  wire       ena,      // always 1 when the design is powered, so you can ignore it
+    input  wire       clk,      // clock
+    input  wire       rst_n     // reset_n - low to reset
+);
+
+  // Internal Signals
+  wire [7:0] a;
+  wire [14:0] b;
+  wire [7:0] c;
+  wire c0,c1,rst;
+
+  assign a[7:0] = ui_in[7:0]; 
+
+  assign b[7:0] = uio_out[7:0];
+  assign b[15:8] = uo_out[15:8];
+  assign c[1:0] = uio_oe[2:0];
+
+  fir fir_inst (
+      .clk(clk),
+    .rst(rst_n),
+    .y_rsc_dat(b),
+    .y_triosy_lz(c[0]),
+    .x_rsc_dat(a),
+    .x_triosy_lz(c[1])
+  );
+
+  assign uio_oe[7:3] = 0
+
+    wire _unused = &{ena, 1'b0};
+
 endmodule
 
