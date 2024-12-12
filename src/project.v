@@ -924,7 +924,8 @@ module tt_um_fir (
   wire [1:0] c;
 
   assign a[7:0] = ui_in[7:0]; 
-  assign b[15:0] = {uio_out[7:0],uo_out[7:0]};
+  //assign b[15:0] = {uio_out[7:0],uo_out[7:0]};
+   
 
 
   //assign {uio_out[7:0],uo_out[7:0]}
@@ -943,6 +944,8 @@ module tt_um_fir (
   );
 
   //assign uio_oe[7:3] = 0;
+  assign uo_out[7:0] = b[7:0];
+  assign uio_out[7:0] = b[15:8];
 
   wire _unused = &{ena, uio_in, 1'b0};
 
