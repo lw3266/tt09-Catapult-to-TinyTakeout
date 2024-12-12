@@ -43,7 +43,10 @@ async def test_project(dut):
         dut.ui_in.value = i
         await ClockCycles(dut.clk, 100)
         # .y_rsc_dat({uio_out[7:0],uo_out[7:0]}),
-        dut._log.info("in = ", dut.ui_in.value, ". Out = ", (dut.uio_out.value + dut.uo_out.value))
+        dut._log.info("in = ")
+        dut._log.info(dut.ui_in.value)
+        dut._log.info(". Out = ")
+        dut._log.info((dut.uio_out.value + dut.uo_out.value))
         assert( dut.uio_out.value + dut.uo_out.value == expected[i])
 
     # Keep testing the module by changing the input values, waiting for
