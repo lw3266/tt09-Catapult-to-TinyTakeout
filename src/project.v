@@ -182,10 +182,6 @@ module  (
     input  wire       ena,      // always 1 when the design is powered, so you can ignore it
     input  wire       rst_n     // reset_n - low to reset
 );
-  
-  tt_um_fir fir_inst (
-    .rst(rst_n),
-  );
 
   // All output pins must be assigned. If not used, assign to 0.
   //assign uo_out  = b;  // Example: ou_out is the sum of ui_in and uio_in
