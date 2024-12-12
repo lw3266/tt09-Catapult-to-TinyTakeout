@@ -173,33 +173,18 @@ module fir_core (
 
 endmodule
 
-module tt_um_fir (
+module  (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
     output wire [7:0] uio_out,  // IOs: Output path
     output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
     input  wire       ena,      // always 1 when the design is powered, so you can ignore it
-    input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-
-  // Internal Signals
-  wire [31:0] a;
-  wire [31:0] b;
-  wire c0,c1;
-
-  assign a[7:0] = ui_in[7:0]; 
-  assign uo_out = b[7:0];
-  assign uio_out = b[15:8];
   
   tt_um_fir fir_inst (
-      .clk(clk),
-    .rst(rst),
-    .y_rsc_dat(b),
-    .y_triosy_lz(c0),
-    .x_rsc_dat(a),
-    .x_triosy_lz(c1)
+    .rst(rst_n),
   );
 
   // All output pins must be assigned. If not used, assign to 0.
@@ -207,6 +192,5 @@ module tt_um_fir (
 
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, rst_n, uio_in,  1'b0};
 
 endmodule
