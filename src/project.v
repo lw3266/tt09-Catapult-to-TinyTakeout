@@ -920,7 +920,7 @@ module tt_um_fir (
 
   // Internal Signals
   wire [7:0] a;
-  wire [14:0] b;
+  //wire [14:0] b;
   wire [1:0] c;
 
   assign a[7:0] = ui_in[7:0]; 
