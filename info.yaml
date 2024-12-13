@@ -22,14 +22,14 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: "a[0]"
-  ui[1]: "a[1]"
-  ui[2]: "a[2]"
-  ui[3]: "a[3]"
-  ui[4]: "a[4]"
-  ui[5]: "a[5]"
-  ui[6]: "a[6]"
-  ui[7]: "a[7]"
+  ui[0]: "x_rsc_dat[0]"
+  ui[1]: "x_rsc_dat[1]"
+  ui[2]: "x_rsc_dat[2]"
+  ui[3]: "x_rsc_dat[3]"
+  ui[4]: "x_rsc_dat[4]"
+  ui[5]: "x_rsc_dat[5]"
+  ui[6]: "x_rsc_dat[6]"
+  ui[7]: "x_rsc_dat[7]"
 
   # Outputs
   uo[0]: "b[0]"
