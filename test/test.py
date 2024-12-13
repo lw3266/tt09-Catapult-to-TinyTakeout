@@ -28,7 +28,7 @@ async def test_project(dut):
     expected = [0, 0, -95, -190, 86, 362, 38, -286, 390, 1066, 1142, 1218, 1665, 2112, 2464, 2816, 3168, 3520, 3872, 4224, 4576, 4928, 5280, 5632, 5984, 6336, 6688, 7040, 7392, 7744, 8096]
     
     await ClockCycles(dut.clk, 80)
-    for i in range(0,256):        
+    for i in range(0,31):        
         dut.ui_in.value = i
         await ClockCycles(dut.clk, 80)
         x = ((dut.uio_out.value << 8) + dut.uo_out.value)
