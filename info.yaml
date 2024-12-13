@@ -32,24 +32,24 @@ pinout:
   ui[7]: "x_rsc_dat[7]"
 
   # Outputs
-  uo[0]: "b[0]"
-  uo[1]: "b[1]"
-  uo[2]: "b[2]"
-  uo[3]: "b[3]"
-  uo[4]: "b[4]"
-  uo[5]: "b[5]"
-  uo[6]: "b[6]"
-  uo[7]: "b[7]"
+  uo[0]: "y_rsc_dat[0]"
+  uo[1]: "y_rsc_dat[1]"
+  uo[2]: "y_rsc_dat[2]"
+  uo[3]: "y_rsc_dat[3]"
+  uo[4]: "y_rsc_dat[4]"
+  uo[5]: "y_rsc_dat[5]"
+  uo[6]: "y_rsc_dat[6]"
+  uo[7]: "y_rsc_dat[7]"
 
   # Bidirectional pins
-  uio[0]: "b[8]"
-  uio[1]: "b[9]"
-  uio[2]: "b[10]"
-  uio[3]: "b[11]"
-  uio[4]: "b[12]"
-  uio[5]: "b[13]"
-  uio[6]: "b[14]"
-  uio[7]: "b[15]"
+  uio[0]: "y_rsc_dat[8]"
+  uio[1]: "y_rsc_dat[9]"
+  uio[2]: "y_rsc_dat[10]"
+  uio[3]: "y_rsc_dat[11]"
+  uio[4]: "y_rsc_dat[12]"
+  uio[5]: "y_rsc_dat[13]"
+  uio[6]: "y_rsc_dat[14]"
+  uio[7]: "y_rsc_dat[15]"
 
 # Do not change!
 yaml_version: 6
