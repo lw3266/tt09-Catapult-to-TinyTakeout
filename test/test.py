@@ -43,7 +43,7 @@ async def test_project(dut):
 
     for i in range(0,30):
         dut.ui_in.value = i
-        # await ClockCycles(dut.clk, 3)
+        await ClockCycles(dut.clk, 3)
         # .y_rsc_dat({uio_out[7:0],uo_out[7:0]}),
         # dut._log.info("in = ")
         # dut._log.info(dut.ui_in.value)
