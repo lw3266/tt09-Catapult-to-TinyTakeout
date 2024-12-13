@@ -29,8 +29,8 @@ module tt_um_fir (
     .x_triosy_lz(x_triosy_lz)   // Tri-state input signal (not used)
   );
 
-  // Map `uio_in` to `fir_core` input `x_rsc_dat`
-  assign x_rsc_dat = uio_in;
+  // Map `ui_in` to `fir_core` input `x_rsc_dat`
+  assign x_rsc_dat = ui_in;
 
   // Split the 16-bit output `y_rsc_dat` into two 8-bit outputs
   assign uo_out = y_rsc_dat[7:0];      // Lower 8 bits of the 16-bit output
