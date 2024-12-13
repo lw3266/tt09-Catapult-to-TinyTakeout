@@ -35,12 +35,13 @@ async def test_project(dut):
 
     for i in range(0,19):
         await ClockCycles(dut.clk, 80)
+        x = ((dut.uio_out.value << 8) + dut.uo_out.value)
         dut._log.info(f"Output: {dut.uio_out.value}{dut.uo_out.value}") # Expected: {expected[i]}")
 
     
     for i in range(0,256):        
         dut.ui_in.value = i
-        await ClockCycles(dut.clk, 20)
+        await ClockCycles(dut.clk, 80)
         x = ((dut.uio_out.value << 8) + dut.uo_out.value)
         dut._log.info(f"input: {dut.ui_in.value} (dec:{i}) --> Output: {dut.uio_out.value}{dut.uo_out.value} (dec:{x}).") # Expected: {expected[i]}")
         #print(dut.ui_in.value, "-->" ,dut.uio_out.value, dut.uo_out.value)
