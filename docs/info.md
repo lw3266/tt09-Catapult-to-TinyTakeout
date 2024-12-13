@@ -9,18 +9,15 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-The 8-bit carry select adder works through the full adder and mux. The Carry Select Adder works by essentially using two ripple adders, with one having cin = 0 and the other cin = 1. Through this procedure, we are able to speed up the calculation of selecting which sum depending on our cin.
-
-The ripple adder works by using a cascade of several full adders connected in series with each other. Each full adder is resposible for their adding their corresponding bits from both inputs and outputs their carryout to the carryin of the next full adder until both inputs have been fully added together. The ripple adder, and by extension the carry select adder is simple to implement and requires minimal logic gates to implement, making it inexpensive and space-efficient compared to other methods of addition. However, there is a delay due to the carry propagation which limits the ripple adder (and therefore the carry-select adder) in its effective speed with larger bitwidth inputs. However, for this application (8-bits), this adder is very efficient in both space and speed.
-
-
-This project uses 'https://github.com/FCHXWH823/Verilog-Adders' as reference.
+This FIR (Finite Impulse Response) Filter works through sythesized verilog generated via Siemen's Catapult using a baseline of C code (HLS). This FIR Filter is specifically designed to be a band-pass filter which rejects low values of input as well as high-values of input. When synthesizing this design, a pipelining of 5 was used as well as no unroll (this led to high throughput but also high latency). The resulting circuit design has a latency of about 89 clock cycles which means that the expected output should be observed around 89 clock cycles after the input has been changed. It is designed with a clock speed of 100MHz in mind.
 
 ## How to test
 
-We tested all the combinations. This means two 8 bits input sum to a 8 bit output, and we ignore the carry out bit.
+We tested the first 30 cases of input. This was done since past this, the expected inputs exceeded the bitrange needed to express the calculated output
 
-Therefore, we expect both the input and the output to be in the range of 0 to 255.
+The input ranges from 8 bits (past input = 30 (decimial), output is assumed to be junk due to TinyTapeout pin limitations causing overflow errors to be present)
+
+The output ranges from 16 bits (2's complement) 
 
 ## External hardware
 
