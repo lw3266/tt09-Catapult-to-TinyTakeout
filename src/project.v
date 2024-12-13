@@ -1,4 +1,6 @@
 `default_nettype none
+'include "concat_sim_rtl.v"
+
 
 module tt_um_fir (
     input  wire [7:0] ui_in,    // Dedicated inputs
