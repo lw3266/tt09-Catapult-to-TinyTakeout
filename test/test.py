@@ -30,8 +30,6 @@ async def test_project(dut):
     for i in range(0,30):        
         dut.ui_in.value = i
         await ClockCycles(dut.clk, 10)
-        dut._log.info(f"SUB case {i}. a: {a}, b: {b}, input: {dut.ui_in.value}, output: {dut.uo_out.value}, UIO: {dut.uio_out.value}")
-
         dut._log.info(f"input: {dut.ui_in.value} --> Output: {dut.uo_out.value}{dut.uio_out.value}")
         #print(dut.ui_in.value, "-->" ,dut.uio_out.value, dut.uo_out.value)
         #assert( (int(dut.uio_out.value) + int(dut.uo_out.value)) == expected[i])
